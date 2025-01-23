@@ -24,7 +24,7 @@ const canvas =document.querySelector('.webgl')
 
  //Renderer
 const renderer = new THREE.WebGLRenderer({
-    canvas: camera
+    canvas: canvas,
     antialias: true
 })
 renderer,setSize(window.innerWidth,window.innerHeight)
