@@ -3,14 +3,13 @@ import * as THREE from 'three';
  ***  SECENE ***
  ******************/
 
-
  //Canvas
-const canvas =document.querySelector('.webgl')
+const canvas = document.querySelector('.webgl')
 
 
  //Scene
  const scene = new THREE.Scene()
- scene.background = new THREE.Color('blue')
+ scene.background = new THREE.Color('gray')
 
  //Camera
  const camera = new THREE.PerspectiveCamera(
@@ -20,14 +19,13 @@ const canvas =document.querySelector('.webgl')
     100
  )
  scene.add(camera)
- cancelAnimationFrame.position.set(0, 0, 5)
 
  //Renderer
 const renderer = new THREE.WebGLRenderer({
     canvas: canvas,
     antialias: true
 })
-renderer,setSize(window.innerWidth,window.innerHeight)
+renderer.setSize(window.innerWidth,window.innerHeight)
 
 
 
@@ -38,28 +36,33 @@ renderer,setSize(window.innerWidth,window.innerHeight)
 // testSphere
 const sphereGeometry = new THREE.SphereGeometry(1)
 const sphereMaterial = new THREE.MeshNormalMaterial(1)
-const testSphere = new THREE(sphereGeometry, sphereMaterial)
+const testSphere = new THREE.Mesh(sphereGeometry, sphereMaterial)
 
 scene.add(testSphere)
+testSphere.position.set(0,0,-5)
 
 
 /***********************
  ***  ANIMATION LOOP ***
  **********************/
- const clock = new THREE.clock()
+ const clock = new THREE.Clock()
 
  const animation = () =>
  {
     // Return elapsedTime
     const elapsedTime = clock.getElapsedTime()
-    console.log(elapsedTime)
+
+    // Animate testSphere
+    //console.log(Math.sin(elapsedTime))
+    //testSphere.position.y = Math.sin(elapsedTime)
+    //testSphere.position.x = Math.cos(elapsedTime)
 
     // Renderer
     renderer.render(scene,camera)
 
     // Request next frame
 
-window.requestAnimationFrame(animation)
+    window.requestAnimationFrame(animation)
 
  }
 
