@@ -1,4 +1,22 @@
-import * as THREE from 'three';
+import * as THREE from "three"
+import * as dat from "lil-gui"
+import { OrbitControls } from "orbitControls"
+
+
+/*******************
+ ***  SETUP ***
+ ******************/
+
+ // Sizes
+const sizes = {
+   with: window.innerWidth,
+   height: window.innerHeight,
+   aspectRatio: window.innerWidth / window.innerHeight
+}
+
+
+
+
 /*******************
  ***  SECENE ***
  ******************/
@@ -14,11 +32,12 @@ const canvas = document.querySelector('.webgl')
  //Camera
  const camera = new THREE.PerspectiveCamera(
     75,
-    window.innerWidth/ window.innerHeight,
+   sizes.aspectRatio,
     0.1,
     100
  )
  scene.add(camera)
+ camera.position.set(0, 0, 5)
 
  //Renderer
 const renderer = new THREE.WebGLRenderer({
@@ -28,6 +47,9 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(window.innerWidth,window.innerHeight)
 
 
+// Controls
+const controls = new OrbitControls(camera, canvas)
+controls.enableDamping = true
 
 /****************
  *** MESHES   ***
@@ -41,6 +63,12 @@ const testSphere = new THREE.Mesh(sphereGeometry, sphereMaterial)
 scene.add(testSphere)
 testSphere.position.set(0,0,-5)
 
+/****************
+ *** UI   ***
+****************/
+
+// UI
+const ui = new dat.GUI()
 
 /***********************
  ***  ANIMATION LOOP ***
@@ -52,10 +80,8 @@ testSphere.position.set(0,0,-5)
     // Return elapsedTime
     const elapsedTime = clock.getElapsedTime()
 
-    // Animate testSphere
-    //console.log(Math.sin(elapsedTime))
-    //testSphere.position.y = Math.sin(elapsedTime)
-    //testSphere.position.x = Math.cos(elapsedTime)
+    // Update OrbitControls
+    controls.update()
 
     // Renderer
     renderer.render(scene,camera)

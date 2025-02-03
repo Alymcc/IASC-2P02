@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <head> 
-    <title> Prototype 2</title>
+    <title> Flatland Prototype </title>
+
     <!-- css -->
-     <link rel="stylesheet" herf="style.css">
+    <link href="style.css" type="text/css" rel="stylesheet" />
+
+    <!-- Flatland Prototype importmap -->
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://ga.jspm.io/npm:three@0.172.0/build/three.module.js",
+            "orbitControls": "https://ga.jspm.io/npm:three@0.172.0/examples/jsm/controls/OrbitControls.js",
+            "lil-gui": "https://ga.jspm.io/npm:lil-gui@0.20.0/dist/lil-gui.esm.js"
+          }
+        }
+        </script>
+        <!-- Flatland Prototype scene-->
+         <script src="script.js" type="module"> </script>
+
 </head>
 <body>
-Week 4 Prototype goes here
+    <h1> Flatland Prototype </h1>
+    <canvas class="webgl"></canvas>
 </body>
 </html>
