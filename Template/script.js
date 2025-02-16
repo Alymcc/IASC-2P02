@@ -60,8 +60,27 @@ const sphereGeometry = new THREE.SphereGeometry(1)
 const sphereMaterial = new THREE.MeshNormalMaterial(1)
 const testSphere = new THREE.Mesh(sphereGeometry, sphereMaterial)
 
+testSphere.castShadow = true 
+
 scene.add(testSphere)
 testSphere.position.set(0,0,-5)
+
+// Smile
+const smileGeometry = new THREE.TorusGeometry(1.25, 0.2, 12, 48, Math.PI)
+const smileMaterial = new THREE.MeshNormalMaterial(1)
+const smile = new THREE.Mesh(smileGeometry, smileMaterial)
+scene.add(smile)
+smile.position.set(6, 0, 0)
+smile.rotation.y = Math.PI * 0.5
+smile.rotation.x = Math.PI
+smile.castShadow = true 
+
+
+/****************
+ ***  LIGHTS  ***
+****************/
+// Ambient Light
+
 
 /****************
  *** UI   ***
