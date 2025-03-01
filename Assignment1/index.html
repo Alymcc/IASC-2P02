@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <head> 
-    <title> Assignment 1</title>
+    <title> Assignment 1 </title>
+
     <!-- css -->
-     <link rel="stylesheet" herf="style.css">
+    <link href="style.css" type="text/css" rel="stylesheet" />
+
+    <!-- three.js importmap -->
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://ga.jspm.io/npm:three@0.172.0/build/three.module.js",
+            "orbitControls": "https://ga.jspm.io/npm:three@0.172.0/examples/jsm/controls/OrbitControls.js",
+            "lil-gui": "https://ga.jspm.io/npm:lil-gui@0.20.0/dist/lil-gui.esm.js"
+          }
+        }
+        </script>
+        <!-- three.js scene-->
+         <script src="script.js" type="module"> </script>
+
 </head>
 <body>
-Assignemnt 1 goes here
+    <h1> Assignment 1 </h1>
+    <canvas class="webgl"></canvas>
 </body>
 </html>
