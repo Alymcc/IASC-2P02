@@ -1,26 +1,76 @@
 <!DOCTYPE html>
-<head> 
-    <title> Assignment 1 </title>
+<head>
+    <title>Assignment 1</title>
 
     <!-- css -->
-    <link href="style.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
 
     <!-- three.js importmap -->
     <script type="importmap">
         {
           "imports": {
-            "three": "https://ga.jspm.io/npm:three@0.172.0/build/three.module.js",
-            "orbitControls": "https://ga.jspm.io/npm:three@0.172.0/examples/jsm/controls/OrbitControls.js",
-            "lil-gui": "https://ga.jspm.io/npm:lil-gui@0.20.0/dist/lil-gui.esm.js"
+            "three": "https://ga.jspm.io/npm:three@0.168.0/build/three.module.js",
+            "OrbitControls": "https://ga.jspm.io/npm:three@0.168.0/examples/jsm/controls/OrbitControls.js",
+            "lil-gui": "https://ga.jspm.io/npm:lil-gui@0.19.2/dist/lil-gui.esm.js"
           }
         }
         </script>
-        <!-- three.js scene-->
-         <script src="script.js" type="module"> </script>
+
+    <!-- three.js scene -->
+    <script src="script.js" type="module"></script>
 
 </head>
 <body>
-    <h1> Assignment 1 </h1>
-    <canvas class="webgl"></canvas>
+  <div class="flexbox">
+    <!-- ESSAY -->
+    <div class="essay">
+     <h2>1. Flatness</h2>
+     <p><span class="clickable" id="part-one">From inside the cave...</span></p>
+
+     <p>The inhabitants of the cave are mesmerized by a colossal deity that gazes over their lives. By day, this magnificent figure casts an enchanting glow, illuminating everything around it. 
+    However, as twilight approaches, the deity fades with the light, leaving the cave dwellers filled with wonder and longing.
+    One day, <span class="clickable" id="first-change">a brilliant circle descends from the deity,</span> igniting excitement and hope among the inhabitants. They interpret this event as a divine signal of imminent new creation. 
+    As the circle hovers beneath the deity, and begins to bounce gracefully, capturing their imagination and evoking visions of a celestial being entwined with the universe. 
+    With majestic grace, the deity begins to follow, <span class="clickable" id="second-change">moving up and down</span> in rhythmic joy, rising and falling as if celebrating this latest creation. Initially seen as erratic, these movements take on profound significance for the cave dwellers, who view them as urgent omens from higher powers. 
+    Each motion resonates in their hearts, filling them with awe and reverence for the mysteries of existence. In this moment, the cave inhabitants feel an unbreakable connection to something far greater, reminding them of the beauty and complexity of their reality and strengthening their bond with one another and their divine protector.</p>
+
+     <p>The concept of "Flatness" describes a limited, two-dimensional perspective of the world, devoid of depth and complexity. 
+      To me, it reflects the tendency to view life through a narrow, unidimensional lens, resulting in a loss of the richness and diversity of experiences, akin to a horse wearing blinders. 
+      The inhabitants of the cave illustrate this idea perfectly. Their entire understanding of their world is based on the shadows cast on the wall, completely unaware of the true forms that create these silhouettes. 
+      This flat worldview confines them to a superficial interpretation, preventing them from grasping the three-dimensional reality that exists beyond their immediate perception. 
+      They can only comprehend what they see, missing out on the broader, multifaceted nature of existence that lies outside the confines of their cave. To these cave dwellers, the primary shadow represents a God or a higher power; 
+      however, in reality, it is likely just something much more mundane. This limitation illustrates how a restricted view can shape one’s beliefs and understanding of life, emphasizing the importance of seeking a deeper, more nuanced perspective that acknowledges the complexity of the world around us. 
+      Embracing the richness of experiences allows for a fuller appreciation of existence.</p>
+
+     <h2>2. Seeing Double</h2>
+     <p><span class="clickable" id="part-two">From outside the cave...</span></p>
+
+     <p>The world outside the cave is a vibrant tapestry of light and shadow, alive with movement and wonder. 
+      The sun, a glowing orb of fiery yellow, hangs high in the sky, casting long shadows of everything in its path. 
+      Outside the cave, there is a little Cactuar, with its spiky green body, happily playing with a bright ball, bouncing it across the ground. 
+      As the ball leaps up into the air, the Cactuar runs forward, eager to catch the ball just outside the cave's entrance, both the shadows bouncing along the wall.
+      As the day wears on and <span class="clickable" id="third-change">the sun begins to set,</span> its descent alters the landscape dramatically. 
+      The shadows of the Cactuar and the ball stretch and shift on the cave wall, creating an illusion that makes the objects appear to shrink and move in curious, unexpected ways. 
+      The warm hues of the sunset paint the sky in shades of orange and pink, contrasting beautifully with the deepening shadows. 
+      Finally, as the sun dips below the horizon, <span class="clickable" id="fourth-change">the Cactuar and its ball leave the scene,</span> trotting off toward home. 
+      The cave wall then descends into darkness, obscuring the lively activities from view, leaving the once-bright world shrouded in mystery and silence.</p>
+
+     <p>Nick Sousanis's concept of "Seeing Double" emphasizes the ability to appreciate multiple perspectives and dimensions of reality at once. 
+      This idea resonates with me because it acknowledges the existence of both visible and hidden elements, as well as the direct and inferred meanings behind them. 
+      Recognizing that various perspectives exist allows for a more comprehensive understanding of any situation. 
+      In this context, the individuals outside the cave represent this duality. 
+      They witness the events responsible for creating the shadows on the cave wall as they can see the sun setting the Cactuar playing and the ball bouncing. 
+      This awareness enables them to understand that these actions are the source of the shifting shadows. 
+      Meanwhile, the cave’s inhabitants, only seeing the shadows, interpret them as independent entities, attributing them to fantastical occurrences. 
+      The connection between the two realms lies in the shadows themselves: the external world casts them, while those inside the cave are left to incorrectly interpret their meaning. 
+      This contrast highlights the difference between the limited understanding of the cave dwellers and the broader, more informed perspective of those outside. 
+      Ultimately, "Seeing Double" encourages us to explore and embrace multiple viewpoints to enrich our understanding of reality.</p>
+    </div>
+
+    <!-- SCENE -->
+    <div class="scene">
+      <canvas class="webgl"></canvas>
+    </div>
+  </div>
 </body>
 </html>
