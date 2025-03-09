@@ -76,12 +76,12 @@ const cubeGeometry = new THREE.BoxGeometry(0.5, 0.5, 0.5)
 const drawCube = (height, color) =>
 {
     // Create cube material
-    const material = new THREE.MeshStandardMaterial({
+    const cubeMaterial = new THREE.MeshStandardMaterial({
         color: new THREE.Color(color)
     })
 
     // Create cube
-    const cube = new THREE.Mesh(cubeGeometry, material)
+    const cube = new THREE.Mesh(cubeGeometry, cubeMaterial)
 
     // Position cube
     cube.position.x = (Math.random() - 0.5) * 10
@@ -97,11 +97,6 @@ const drawCube = (height, color) =>
     scene.add(cube)
 }
 
-//drawCube(0, 'red')
-//drawCube(1, 'green')
-//drawCube(2, 'yellow')
-//drawCube(3, 'blue')
-
 /*******
 ** UI **
 ********/
@@ -112,7 +107,7 @@ const ui = new dat.GUI()
 ** TEXT ANALYSIS **
 ******************/
 // SourceText
-const sourceText = "Once upon a time, there was a little black dog named Ollie. He grew up with lots of other little dogs, but has to leave them to join a loving family of humans. Over time, he fur grew old and white. Ollie is an old dog now, but he still loves to take naps just like he did when he was little."
+const sourceText = "Once upon a time, in a lush magical forest, there lived a small fairy named Luna. She had shimmering wings and a heart full of kindness and joy. One day, Luna found a wounded bird and used her magical powers to heal it. Grateful, the bird sang a beautiful melody, filling the forest with joy. From that day on, Luna and the bird became the best of friends, spreading joy wherever they went."
 
 // Variables
 let parsedText, tokenizedText
@@ -149,13 +144,10 @@ const findSearchTermInTokenizedText = (term, color) =>
 
 
 tokenizeSourceText()
-//findSearchTermInTokenizedText("little", "yellow")
-//findSearchTermInTokenizedText("dog", "pink")
-//findSearchTermInTokenizedText("dogs", "pink")
-
-findSearchTermInTokenizedText("black", "black")
-findSearchTermInTokenizedText("white", "white")
-findSearchTermInTokenizedText("dog", "pink")
+findSearchTermInTokenizedText("magical", "purple")
+findSearchTermInTokenizedText("joy", "yellow")
+findSearchTermInTokenizedText("bird", "red")
+findSearchTermInTokenizedText("luna", "pink")
 
 /*******************
 ** ANIMATION LOOP **
