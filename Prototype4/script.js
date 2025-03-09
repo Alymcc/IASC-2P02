@@ -76,12 +76,12 @@ const cubeGeometry = new THREE.BoxGeometry(0.5, 0.5, 0.5)
 const drawCube = (height, color) =>
 {
     // Create cube material
-    const cubeMaterial = new THREE.MeshStandardMaterial({
+    const material = new THREE.MeshStandardMaterial({
         color: new THREE.Color(color)
     })
 
     // Create cube
-    const cube = new THREE.Mesh(cubeGeometry, cubeMaterial)
+    const cube = new THREE.Mesh(cubeGeometry, material)
 
     // Position cube
     cube.position.x = (Math.random() - 0.5) * 10
@@ -144,10 +144,11 @@ const findSearchTermInTokenizedText = (term, color) =>
 
 
 tokenizeSourceText()
+
 findSearchTermInTokenizedText("magical", "purple")
 findSearchTermInTokenizedText("joy", "yellow")
 findSearchTermInTokenizedText("bird", "red")
-findSearchTermInTokenizedText("luna", "pink")
+findSearchTermInTokenizedText("luna", "lightcyan")
 
 /*******************
 ** ANIMATION LOOP **
