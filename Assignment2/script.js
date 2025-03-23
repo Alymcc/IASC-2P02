@@ -71,73 +71,44 @@ scene.add(directionalLight)
 ** MESHES **
 ************/
 
-// torusKnot Geometry
-const torusKnotGeometry = new THREE.TorusKnotGeometry(.8, .2) 
+    // Shape Geometry 
+    const drawShape = (geometry, height, params) => {
 
-const drawTorusKnot = (height, params) =>
-{
-    // Create torusKnot material
-    const torusKnotMaterial = new THREE.MeshStandardMaterial({
-        color: new THREE.Color(params.color)
-    })
-
-    // Create torusKnot
-    const torusKnot = new THREE.Mesh(torusKnotGeometry, torusKnotMaterial)
-
-    // Position torusKnot
-    torusKnot.position.x = (Math.random() - 0.5) * params.diameter
-    torusKnot.position.z = (Math.random() - 0.5) * params.diameter
-    torusKnot.position.y = height - 10
-
-    // Scale torusKnot
-    torusKnot.scale.x = params.scale
-    torusKnot.scale.y = params.scale
-    torusKnot.scale.z = params.scale
-
-    // Randomize torusKnot 
-    if(params.randomized){
-        torusKnot.rotation.x = Math.random() * 2 * Math.PI
-        torusKnot.rotation.z = Math.random() * 2 * Math.PI
-        torusKnot.rotation.y = Math.random() * 2 * Math.PI
-    }
-
-    // Add torusKnot to group
-    params.group.add(torusKnot)
-}
-
-// Cube Geometry
-const cubeGeometry = new THREE.BoxGeometry(0.2, 0.2, 0.2)
-
-const drawCube = (height, params) =>
-{
-    // Create cube material
+    // Create material
     const material = new THREE.MeshStandardMaterial({
         color: new THREE.Color(params.color)
-    })
+    });
 
-    // Create cube
-    const cube = new THREE.Mesh(cubeGeometry, material)
+    // Create mesh
+    const shape = new THREE.Mesh(geometry, material);
 
-    // Position cube
-    cube.position.x = (Math.random() - 0.5) * params.diameter
-    cube.position.z = (Math.random() - 0.5) * params.diameter
-    cube.position.y = height - 10
+    // Position mesh
+    shape.position.x = (Math.random() - 0.5) * params.diameter;
+    shape.position.z = (Math.random() - 0.5) * params.diameter;
+    shape.position.y = height - 10;
 
-    // Scale cube
-    cube.scale.x = params.scale
-    cube.scale.y = params.scale
-    cube.scale.z = params.scale
+    // Scale mesh
+    shape.scale.x = params.scale;
+    shape.scale.y = params.scale;
+    shape.scale.z = params.scale;
 
-    // Randomize cube 
-    if(params.randomized){
-        cube.rotation.x = Math.random() * 2 * Math.PI
-        cube.rotation.z = Math.random() * 2 * Math.PI
-        cube.rotation.y = Math.random() * 2 * Math.PI
+    // Randomize rotation
+    if (params.randomized) {
+        shape.rotation.x = Math.random() * 2 * Math.PI;
+        shape.rotation.z = Math.random() * 2 * Math.PI;
+        shape.rotation.y = Math.random() * 2 * Math.PI;
     }
 
-    // Add cube to group
-    params.group.add(cube)
+
+    // Add to group
+    params.group.add(shape)
 }
+
+ // Geometries
+ const cubeGeometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
+ const sphereGeometry = new THREE.SphereGeometry(0.2, 32, 32);
+ const coneGeometry = new THREE.ConeGeometry(0.2, 0.5, 32);
+
 
 
 /*******
@@ -156,7 +127,6 @@ scene.add(group2)
 const group3 = new THREE.Group()
 scene.add(group3)
 
-drawTorusKnot(heightTorusKnot, paramsTorusKnot);
 
 const uiObj = {
     sourceText: "Diveregent",
@@ -167,6 +137,7 @@ const uiObj = {
         term: 'faction',
         color: '#aa00ff',
         diameter: 8,
+        geometry: cubeGeometry,
         group: group1,
         nCubes: 100,
         randomized: true,
@@ -176,6 +147,7 @@ const uiObj = {
         term: 'divergent',
         color: '#00ffaa',
         diameter: 4,
+        geometry: sphereGeometry,
         group: group2,
         nCubes: 100,
         randomized: true,
@@ -185,6 +157,7 @@ const uiObj = {
         term: 'initiation',
         color: '#ffaa00',
         diameter: 6,
+        geometry: coneGeometry,
         group: group3,
         nCubes: 100,
         randomized: true,
@@ -319,7 +292,7 @@ const findSearchTermInTokenizedText = (params) =>
             // call drawCube function nCubes times using converted height value
             for(let a = 0; a < params.nCubes; a++)
             {
-                drawCube(height, params)
+                drawShape(params.geometry, height, params)
             }
         }
     }
