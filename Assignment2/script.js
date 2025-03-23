@@ -156,17 +156,6 @@ scene.add(group2)
 const group3 = new THREE.Group()
 scene.add(group3)
 
-// Add torusKnot to group1
-const paramsTorusKnot = {
-    color: '#ff0000', // Example color
-    diameter: 8, // Example diameter
-    group: group1, // Adding to group1
-    randomized: true, // Enable randomization
-    scale: 1 // Example scale
-};
-
-const heightTorusKnot = 10; // Example height
-
 drawTorusKnot(heightTorusKnot, paramsTorusKnot);
 
 const uiObj = {
