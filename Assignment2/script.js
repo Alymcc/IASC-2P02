@@ -37,7 +37,7 @@ const canvas = document.querySelector('.webgl')
 
 // Scene
 const scene = new THREE.Scene()
-scene.background = new THREE.Color('gray')
+scene.background = new THREE.Color('purple')
 
 // Camera
 const camera = new THREE.PerspectiveCamera(
@@ -81,7 +81,7 @@ scene.add(directionalLight)
 
     // Create mesh
     const shape = new THREE.Mesh(geometry, material);
-
+    
     // Position mesh
     shape.position.x = (Math.random() - 0.5) * params.diameter;
     shape.position.z = (Math.random() - 0.5) * params.diameter;
@@ -105,10 +105,10 @@ scene.add(directionalLight)
 }
 
  // Geometries
- const cubeGeometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
- const sphereGeometry = new THREE.SphereGeometry(0.2, 32, 32);
- const coneGeometry = new THREE.ConeGeometry(0.2, 0.5, 32);
-
+    const coneGeometry = new THREE.ConeGeometry(0.2, 0.5, 32);
+    const torusKnotGeometry = new THREE.TorusKnotGeometry(0.2, 0.05);
+    const sphereGeometry = new THREE.SphereGeometry( .5, 32, 16 ); 
+    
 
 
 /*******
@@ -122,46 +122,48 @@ let preset = {}
 // Groups
 const group1 = new THREE.Group()
 scene.add(group1)
+group1.position.set(0, 0, 0);
 const group2 = new THREE.Group()
 scene.add(group2)
+group2.position.set(0, 1, 0);
 const group3 = new THREE.Group()
 scene.add(group3)
-
+group3.position.set(-1, 0, 0); 
 
 const uiObj = {
-    sourceText: "Diveregent",
+    sourceText: " ",
     saveSourceText() {
         saveSourceText()
     },
     term1: {
-        term: 'faction',
-        color: '#aa00ff',
-        diameter: 8,
-        geometry: cubeGeometry,
+        term: 'divergent',
+        color: '#e8ff3d',
+        diameter: 4,
+        geometry: torusKnotGeometry,
         group: group1,
-        nCubes: 100,
+        nCubes: 20,
         randomized: true,
-        scale: 1
+        scale: .75
     },
     term2: {
-        term: 'divergent',
-        color: '#00ffaa',
-        diameter: 4,
+        term: 'faction',
+        color: '#ffffff',
+        diameter: 10,
         geometry: sphereGeometry,
         group: group2,
-        nCubes: 100,
+        nCubes: 25,
         randomized: true,
-        scale: 1
+        scale: .5
     },
     term3: {
-        term: 'initiation',
-        color: '#ffaa00',
-        diameter: 6,
+        term: 'serum',
+        color: '#e00b0b',
+        diameter: 8,
         geometry: coneGeometry,
         group: group3,
-        nCubes: 100,
-        randomized: true,
-        scale: 1
+        nCubes: 50,
+        randomized: false,
+        scale: .75
     },
     saveTerms() {
         saveTerms()
@@ -247,7 +249,7 @@ termsFolder
 
 termsFolder
     .addColor(uiObj.term3, 'color')
-    .name("Term 3 Color")
+    .name("Term 3 Color")  
 
 visualizeFolder
     .add(uiObj, 'saveTerms')
@@ -284,7 +286,7 @@ const findSearchTermInTokenizedText = (params) =>
     // Use a for loop to go through the tokenizedText array
     for (let i = 0; i < tokenizedText.length; i++)
     {
-        // If tokenizedText[i] matches our searchTerm, then we draw a cube
+        // If tokenizedText[i] matches our searchTerm, then we draw mesh
         if(tokenizedText[i] === params.term){
             // convert i into height, which is a value between 0 and 20
             const height = (100 / tokenizedText.length) * i * 0.2
@@ -311,6 +313,23 @@ const animation = () =>
 
     // Update OrbitControls
     controls.update()
+
+   //Group 1 Rotate 
+group1.children.forEach((torus) => {
+    torus.rotation.x += 0.01; 
+    torus.rotation.y += 0.02; 
+    torus.rotation.z += 0.015; 
+});
+   
+    // Group 2 Pulsing Effect 
+    const scaleFactor = Math.max(0.1, Math.abs(Math.sin(elapsedTime * 0.6))); 
+    group2.scale.x = scaleFactor;
+    group2.scale.y = scaleFactor;
+    group2.scale.z = scaleFactor; 
+
+    //Group 3 Wobble
+    group3.position.y += Math.sin(elapsedTime) * 0.02; 
+    group3.rotation.y += Math.sin(elapsedTime) * 0.005;
 
     // Rotate Camera
     if(uiObj.rotateCamera)
